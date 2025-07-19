@@ -1,5 +1,4 @@
-# Vue 3 + Vite
+# ToDoList
 
-ToDoList 初尝试 
 
-2025/7/16
+Vue3 + Vite + Pinia + TypeScript + Element-Plus + ECharts
