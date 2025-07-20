@@ -1,3 +1,12 @@
+# 已完成功能清单
+
+[x] 登录注册        Element Plus      用户身份验证
+[x] 状态共享        Pinia             登录状态/数据共享
+[x] 页面切换        Tabs/Menu         多页面逻辑
+[x] 路由守卫        Vue Router        根据是否登录控制页面跳转
+[x] 本地缓存        LocalStorage      保持登陆状态不被抹去
+
+
 用Vite创建一个Vue项目，然后集成路由、状态管理和Element Plus组件库。
 使用Element Plus的Tab组件配合路由实现跳转功能，用List组件做一个TodoList。
 这个TodoList要尽可能多地使用不同的状态管理方案。

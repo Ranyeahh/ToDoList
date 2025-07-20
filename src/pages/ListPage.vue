@@ -1,7 +1,7 @@
 <script setup lang="ts">
-
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import LogOut from '@/components/LogOut.vue'
 import { useUserStore } from '@/store/user'
 
 const user = useUserStore()
@@ -14,7 +14,7 @@ const user = useUserStore()
 
     <AppFooter />
   </div>
-    <el-tabs >
+  <el-tabs>
     <el-tab-pane label="个人信息" name="info">
       <p>这是个人信息内容</p>
     </el-tab-pane>
@@ -22,4 +22,6 @@ const user = useUserStore()
       <p>这里是订单记录</p>
     </el-tab-pane>
   </el-tabs>
+
+  <LogOut />
 </template>

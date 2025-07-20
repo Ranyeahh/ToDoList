@@ -1,11 +1,6 @@
 <!-- src/components/FormRegister.vue -->
 <template>
-  <el-form
-    :model="form"
-    :rules="rules"
-    ref="formRef"
-    label-width="100px"
-  >
+  <el-form :model="form" :rules="rules" ref="formRef" label-width="100px">
     <el-form-item label="用户名" prop="name">
       <el-input v-model="form.name" placeholder="请输入用户名" />
     </el-form-item>
@@ -90,7 +85,9 @@ function changeImg() {
 function handleRegister() {
   formRef.value?.validate((valid) => {
     if (valid) {
-      user.register(form.name) // 注册后保存用户名到 Pinia
+      const token = 'mock-token-' + form.name
+      user.logIn(token, form.name)
+      // 注册后保存用户名
       ElMessageBox.alert(`${form.name} 注册成功`)
       router.push('/list')
     }

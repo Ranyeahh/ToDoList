@@ -3,24 +3,32 @@ import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
-    name:'',
-    log:false
+    token: localStorage.getItem('token') || '',
+    name: localStorage.getItem('name') || '',
   }),
-  getters: {
 
+  getters: {
+    In: (state) => !!state.token,
   },
+
   actions: {
-    register(name:string){
+    register(token: string, name: string) {
+      this.token = token
       this.name = name
-      this.log = true
+      localStorage.setItem('token', token)
+      localStorage.setItem('name', name)
     },
-    logIn(name:string){
+    logIn(token: string, name: string) {
+      this.token = token
       this.name = name
-      this.log = true
+      localStorage.setItem('token', token)
+      localStorage.setItem('name', name)
     },
-    logOut(){
+    logOut() {
+      this.token = ''
       this.name = ''
-      this.log = false
-    }
-  }
+      localStorage.removeItem('token')
+      localStorage.removeItem('name')
+    },
+  },
 })

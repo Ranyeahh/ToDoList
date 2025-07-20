@@ -1,7 +1,6 @@
 <!-- src/components/FormLogin.vue -->
 <template>
-  <el-form
-  :model="form" :rules="rules" ref="formRef" label-width="100px">
+  <el-form :model="form" :rules="rules" ref="formRef" label-width="100px">
     <el-form-item label="用户名" prop="name">
       <el-input v-model="form.name" placeholder="请输入用户名" />
     </el-form-item>
@@ -40,7 +39,8 @@ const rules = Rules
 function handleLogin() {
   formRef.value?.validate((valid) => {
     if (valid) {
-      user.logIn(form.name)
+      const token = 'mock-token-' + form.name
+      user.logIn(token, form.name)
       ElMessageBox.alert(`${form.name} 登录成功`)
       router.push('/list')
     }
