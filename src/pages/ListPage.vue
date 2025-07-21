@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
+import DivList from '@/components/DivList.vue'
 import LogOut from '@/components/LogOut.vue'
 import { useUserStore } from '@/store/user'
 
@@ -10,18 +11,41 @@ const user = useUserStore()
 <template>
   <div class="container">
     <AppHeader />
-    <h3>Hello ,{{ user.name }} !</h3>
-
+    <main class="main-content">
+      <h1 class="greeting">Hello, {{ user.name }}, Let's start now!</h1>
+      <div class="list-container">
+        <DivList />
+      </div>
+    </main>
     <AppFooter />
+    <div class="logout-container">
+      <LogOut />
+    </div>
   </div>
-  <el-tabs>
-    <el-tab-pane label="个人信息" name="info">
-      <p>这是个人信息内容</p>
-    </el-tab-pane>
-    <el-tab-pane label="订单记录" name="orders">
-      <p>这里是订单记录</p>
-    </el-tab-pane>
-  </el-tabs>
-
-  <LogOut />
 </template>
+
+<style scoped>
+.container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 50px; /* 根据需要调整 */
+}
+
+.greeting {
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 20px 0;
+}
+
+.logout-container {
+  position: fixed;
+  bottom: 80px;
+  right: 300px;
+}
+</style>

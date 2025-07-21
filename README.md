@@ -1,18 +1,22 @@
 # 已完成功能清单
 
 [x] 登录注册        Element Plus      用户身份验证
+
 [x] 状态共享        Pinia             登录状态/数据共享
+
 [x] 页面切换        Tabs/Menu         多页面逻辑
+
 [x] 路由守卫        Vue Router        根据是否登录控制页面跳转
+
 [x] 本地缓存        LocalStorage      保持登陆状态不被抹去
+_____________________________________________________________________________________________________________________________
 
+用Vite创建一个Vue项目，集成路由、状态管理和Element Plus组件库
+- 实现一些常见的表单校验功能
+- Tab组件配合路由实现跳转功能
+- 尽可能多地使用不同的状态管理方案
 
-用Vite创建一个Vue项目，然后集成路由、状态管理和Element Plus组件库。
-使用Element Plus的Tab组件配合路由实现跳转功能，用List组件做一个TodoList。
-这个TodoList要尽可能多地使用不同的状态管理方案。
-最后再写一个表单页面，使用Element Plus的组件库，并实现一些常见的表单校验功能。
-
-实现以下技术点：
+技术点如下：
   - Vite搭建Vue项目
   - Vue Router路由配置
   - Pinia状态管理
@@ -20,9 +24,7 @@
   - Tab组件与路由联动
   - TodoList功能实现
   - 表单页面带校验功能
-注意：所有代码需要手写，不能直接复制现成代码。
-
-
+  
 _______________________________________________________________________________________________________________________________
 # ToDo
 
@@ -30,15 +32,14 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+[VSCode] + [Volar] (and disable Vetur).
 
 ## Type Support for `.vue` Imports in TS
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
 ## Customize configuration
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+See [Vite Configuration Reference]
 
 ## Project Setup
 
@@ -58,7 +59,7 @@ npm run dev
 npm run build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### Lint with [ESLint]
 
 ```sh
 npm run lint

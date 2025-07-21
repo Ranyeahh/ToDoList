@@ -1,32 +1,14 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-
 
 </script>
 
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/List">List</RouterLink>
-      <RouterLink to="/Chart">Chart</RouterLink>
-    </nav>
-  </header>
   <RouterView />
 </template>
 
 
 <style scoped>
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgb(255, 230, 0); /* 可选：添加背景色 */
 
-  z-index: 1000; /* 确保导航栏在其他内容之上 */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 可选：添加阴影效果 */
-}
 
 nav {
   display: flex;
