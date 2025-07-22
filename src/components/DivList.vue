@@ -6,8 +6,21 @@
     </div>
     <!-- 标题栏 -->
     <div class="header-row">
+      <!-- 日期选择器 -->
+      <el-date-picker
+        v-model="selectedDate"
+        type="date"
+        placeholder="选择日期"
+        format="YYYY-MM-DD"
+        value-format="YYYY-MM-DD"
+        style="margin-right: 8px"
+      />
       <el-button type="primary" plain @click="handleByDate">按日期查找</el-button>
-            <el-button type="warning" plain  @click="handleShuffle">洗牌</el-button>
+      <el-tooltip content="请先选择日期" v-if="!selectedDate">
+        <el-button type="warning" plain disabled>洗牌</el-button>
+      </el-tooltip>
+      <el-button v-else type="warning" plain @click="handleShuffle">洗牌</el-button>
+
       <div class="header-title">标题</div>
       <div class="header-actions">
         <el-button size="small" type="info" plain @click="handleByStart">按开始时间排序</el-button>
@@ -18,34 +31,80 @@
     <div class="search" @click="handleSearch">
       <el-input v-model="searchText" placeholder="搜索事项..." clearable class="search-input" />
     </div>
-
     <!-- 事项 -->
     <div max-height="400px" class="todo-div">
-      <div v-for="item in count" :key="item" class="task-item">
-        <DivTask />
+      <div class="todo-div">
+        <DivTask v-for="task in listStore.allTasks" :key="task.id" :task="task" />
       </div>
     </div>
-
   </div>
 </template>
 
 <script setup lang="ts">
 import TaskAdd from '@/components/TaskAdd.vue'
 import DivTask from '@/components/DivTask.vue'
+import { useListStore } from '@/store/list'
+import type { Task } from '@/store/list'
 import { ref } from 'vue'
 
+const listStore = useListStore()
+const selectedDate = ref<Date | null>(null)
+
 const searchText = ref('')
-const count = ref(3)
+const count = ref(1)
 
-function handleByDate() {}
+function handleByDate() {
+  if (!selectedDate.value) {
+    alert('请选择日期')
+    return
+  }
+  const date = new Date(selectedDate.value)
+  const tasks = listStore.getDate(date)
+  if (tasks.length === 0) {
+    alert('当天没有任务')
+  }
+  listStore.list = tasks
+}
 
-function handleByStart() {}
+function handleByStart() {
+  listStore.byStart()
+}
 
-function handleByEnd() {}
+function handleByEnd() {
+  listStore.byEnd()
+}
 
-function handleSearch() {}
+function handleSearch() {
+  if (!searchText.value.trim()) {
+    // 如果搜索框为空，显示所有任务
+    listStore.list = (JSON.parse(localStorage.getItem('todo-list') || '[]') as Task[]).map(
+      (item) => ({
+        ...item,
+        start: new Date(item.start),
+        end: new Date(item.end),
+      }),
+    )
+    count.value = listStore.list.length
+    return
+  }
+  // 根据内容模糊搜索
+  const keyword = searchText.value.toLowerCase()
+  const filtered = listStore.list.filter((task) => task.content.toLowerCase().includes(keyword))
+  if (filtered.length === 0) {
+    alert('无匹配任务')
+  }
+  listStore.list = filtered
+  count.value = filtered.length
+}
 
-function handleShuffle() {}
+function handleShuffle() {
+  if (!selectedDate.value) {
+    alert('请先选择日期')
+    return
+  }
+  const date = new Date(selectedDate.value)
+  listStore.shuffle(date)
+}
 </script>
 
 <style scoped>

@@ -69,7 +69,18 @@ export const useListStore = defineStore('list', {
     },
 
     getDate(date: Date): Task[] {
-      return this.list.filter((item) => item.start <= date && item.end >= date)
+      const y = date.getFullYear()
+      const m = date.getMonth()
+      const d = date.getDate()
+      const dateOnly = new Date(y, m, d)
+
+      return this.list.filter((item) => {
+        const start = new Date(item.start)
+        const end = new Date(item.end)
+
+        // 只比较年月日，不受时分秒干扰
+        return start <= dateOnly && end >= dateOnly
+      })
     },
 
     shuffle(date: Date) {
@@ -88,11 +99,6 @@ export const useListStore = defineStore('list', {
 
     byEnd() {
       this.list.sort((a, b) => a.end.getTime() - b.end.getTime())
-      this.save()
-    },
-
-    reorderTasks(newOrder: Task[]) {
-      this.list = newOrder
       this.save()
     },
 
