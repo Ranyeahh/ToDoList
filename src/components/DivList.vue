@@ -43,8 +43,8 @@
 <script setup lang="ts">
 import TaskAdd from '@/components/TaskAdd.vue'
 import DivTask from '@/components/DivTask.vue'
-import { useListStore } from '@/store/list'
-import type { Task } from '@/store/list'
+import { useListStore } from '@/stores/list'
+import type { Task } from '@/stores/list'
 import { ref } from 'vue'
 
 const listStore = useListStore()

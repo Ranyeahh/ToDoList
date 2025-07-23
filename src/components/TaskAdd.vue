@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { useListStore } from '@/store/list'
+import { useListStore } from '@/stores/list'
 const listStore = useListStore()
 
 // 输入框内容
@@ -55,7 +55,6 @@ function handleAdd() {
   date.value = ''
 }
 </script>
-
 
 <style scoped>
 .compact-container {

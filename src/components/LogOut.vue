@@ -1,27 +1,24 @@
 <template>
-  <el-button  class="logout-button" @click="handleLogout" >退出登录</el-button>
+  <el-button class="logout-button" @click="handleLogout">退出登录</el-button>
 </template>
-
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
-import { useUserStore } from '@/store/user'
+import { useUserStore } from '@/stores/user'
 
 const router = useRouter()
 const user = useUserStore()
 
-
 function handleLogout() {
-      user.logOut()
-      ElMessageBox.alert('已退出，欢迎再次使用')
-      router.push('/')
-    }
+  user.logOut()
+  ElMessageBox.alert('已退出，欢迎再次使用')
+  router.push('/')
+}
 </script>
 
 <style scoped>
 .logout-button {
-
   font-size: 18px;
   padding: 12px 24px;
 
@@ -30,8 +27,8 @@ function handleLogout() {
   color: rgb(255, 255, 255);
 
   &:hover {
-  font-size: 20px;
-  padding: 18px 30px;
+    font-size: 20px;
+    padding: 18px 30px;
   }
 
   &:active {

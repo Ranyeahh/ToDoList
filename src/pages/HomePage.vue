@@ -18,7 +18,6 @@ import FormRegister from '@/components/FormRegister.vue'
         </el-tab-pane>
       </el-tabs>
     </div>
-
     <AppFooter />
   </div>
 </template>

@@ -53,7 +53,7 @@
 
 <script setup lang="ts">
 import { Delete, Edit } from '@element-plus/icons-vue'
-import { useListStore } from '@/store/list'
+import { useListStore } from '@/stores/list'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { ref } from 'vue'
 

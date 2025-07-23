@@ -57,7 +57,7 @@ import { ref, reactive } from 'vue'
 import type { FormInstance } from 'element-plus'
 import { useRouter } from 'vue-router'
 import { ElMessageBox } from 'element-plus'
-import { useUserStore } from '@/store/user'
+import { useUserStore } from '@/stores/user'
 import { Rules } from '@/utils/valid'
 import { random } from '@/utils/captcha'
 

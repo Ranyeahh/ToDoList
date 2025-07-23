@@ -3,7 +3,7 @@ import AppHeader from '@/components/AppHeader.vue'
 import AppFooter from '@/components/AppFooter.vue'
 import DivList from '@/components/DivList.vue'
 import LogOut from '@/components/LogOut.vue'
-import { useUserStore } from '@/store/user'
+import { useUserStore } from '@/stores/user'
 
 const user = useUserStore()
 </script>

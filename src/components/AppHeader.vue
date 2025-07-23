@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { useUserStore } from '@/store/user'
+import { useUserStore } from '@/stores/user'
 
 const user = useUserStore()
 </script>
@@ -32,12 +32,12 @@ const user = useUserStore()
 }
 
 .user {
-  font-size:larger;
-  font-style:italic;
+  font-size: larger;
+  font-style: italic;
   position: absolute; /* 绝对定位 */
   right: 20px; /* 距离右边20px */
   margin: 0; /* 移除默认边距 */
-  color:rgb(242, 43, 242);
+  color: rgb(242, 43, 242);
 }
 nav {
   display: flex;
