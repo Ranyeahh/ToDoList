@@ -58,15 +58,18 @@ watch(() => props.option, (newOption) => {
 <style scoped>
 .chart-container {
   width: 100%;
-  height: 300px; /* 降低高度 */
-  min-height: 250px; /* 设置最小高度 */
-  position: relative; /* 为图表定位做准备 */
+  height: 320px;
+  min-height: 280px;
+  position: relative;
+  padding: 8px;
 }
 
-/* 响应式调整 */
+/* 响应式：移动端更紧凑 */
 @media (max-width: 768px) {
   .chart-container {
-    height: 220px; /* 移动端保持更矮 */
+    height: 260px;
+    padding: 4px;
   }
 }
 </style>
+
